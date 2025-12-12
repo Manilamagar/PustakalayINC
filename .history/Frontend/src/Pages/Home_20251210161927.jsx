@@ -8,7 +8,7 @@ const Home = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative bg-linear-to-r from-blue-600 via-indigo-700 to-purple-700 text-white py-20 px-6 text-center overflow-hidden rounded-b-3xl shadow-lg">
+      <div className="relative bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-700 text-white py-20 px-6 text-center overflow-hidden rounded-b-3xl shadow-lg">
         <div className="absolute -top-20 -left-20 w-96 h-96 bg-purple-500/30 rounded-full animate-pulse"></div>
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-400/30 rounded-full animate-pulse"></div>
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">

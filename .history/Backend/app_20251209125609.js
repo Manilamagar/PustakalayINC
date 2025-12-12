@@ -40,13 +40,6 @@ app.post('/users', async (req, res) => {
   }
 });
 
-// Author routes
-app.get('/authors', getAllAuthors);
-app.get('/authors/:id', getAuthorById);
-app.post('/authors', createAuthor);
-app.put('/authors/:id', updateAuthor);
-app.delete('/authors/:id', deleteAuthor);
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

@@ -1,4 +1,4 @@
-// src/Pages/Login.jsx
+// src/pages/Login.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,7 +10,7 @@ import Button from '../components/Button';
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    identifier: '',
+    email: '',
     password: '',
   });
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ const Login = () => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      // Redirect based on role
+      // Optional: Redirect based on role
       if (res.data.user.role === 'admin') {
         navigate('/dashboard'); // admin dashboard
       } else {
@@ -51,17 +51,17 @@ const Login = () => {
       <Navbar />
       <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Login to INC Pustakalay</h2>
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
 
-          {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+          {error && <p className="text-red-500 mb-4">{error}</p>}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
-              name="identifier"
-              value={formData.identifier}
+              name="email"
+              type="email"
+              value={formData.email}
               onChange={handleChange}
-              placeholder="Email or Library ID"
-              required
+              placeholder="Email"
             />
             <Input
               name="password"
@@ -69,32 +69,21 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              required
             />
-            <Button type="submit" disabled={loading} className="w-full">
+            <Button type="submit" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
           </form>
 
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-600">
-              <span
-                onClick={() => navigate('/forgot-password')}
-                className="text-blue-600 cursor-pointer underline"
-              >
-                Forgot Password?
-              </span>
-            </p>
-            <p className="text-sm text-gray-600 mt-2">
-              Don't have an account?{' '}
-              <span
-                onClick={() => navigate('/register')}
-                className="text-blue-600 cursor-pointer underline"
-              >
-                Register
-              </span>
-            </p>
-          </div>
+          <p className="mt-4 text-sm text-gray-600">
+            Don't have an account?{' '}
+            <span
+              onClick={() => navigate('/register')}
+              className="text-blue-600 cursor-pointer underline"
+            >
+              Register
+            </span>
+          </p>
         </div>
       </div>
       <Footer />
