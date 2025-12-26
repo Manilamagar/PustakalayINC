@@ -23,11 +23,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="bg-linear-to-r from-blue-600 via-indigo-700 to-purple-700 rounded-lg p-2 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white text-xl font-bold">INC</span>
+            <div className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg p-2 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <span className="text-white text-2xl font-bold">BM</span>
             </div>
             <span className="text-2xl font-bold text-gray-800 tracking-tight">
-              Pusta<span className="text-indigo-500">kalay</span>
+              Blog<span className="text-indigo-500">Verse</span>
             </span>
           </Link>
 

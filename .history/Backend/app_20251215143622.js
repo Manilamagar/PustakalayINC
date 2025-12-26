@@ -64,12 +64,6 @@ app.post('/authors', createAuthor);
 app.put('/authors/:id', updateAuthor);
 app.delete('/authors/:id', deleteAuthor);
 
-
-
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/books", require("./routes/books"));
-app.use("/api/borrow", require("./routes/borrow"));
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

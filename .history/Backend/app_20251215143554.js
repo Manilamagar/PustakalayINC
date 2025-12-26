@@ -41,34 +41,12 @@ app.post('/users', async (req, res) => {
 });
 
 
-
-// LOGIN
-app.post("/api/login", async (req, res) => {
-const { email, password } = req.body;
-const user = await prisma.user.findUnique({ where: { email } });
-if (!user) return res.status(401).json({ msg: "User not found" });
-
-
-const valid = await bcrypt.compare(password, user.password);
-if (!valid) return res.status(401).json({ msg: "Invalid password" });
-
-
-const token = jwt.sign({ id: user.id, role: user.role }, SECRET, { expiresIn: "1d" });
-res.json({ token, role: user.role });
-});
-
 // Author routes
 app.get('/authors', getAllAuthors);
 app.get('/authors/:id', getAuthorById);
 app.post('/authors', createAuthor);
 app.put('/authors/:id', updateAuthor);
 app.delete('/authors/:id', deleteAuthor);
-
-
-
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/books", require("./routes/books"));
-app.use("/api/borrow", require("./routes/borrow"));
 
 const PORT = process.env.PORT || 3000;
 
